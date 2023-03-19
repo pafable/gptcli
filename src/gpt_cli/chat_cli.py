@@ -1,8 +1,17 @@
+import argparse
 import openai
 import os
-import argparse
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    dest='prompt',
+    help='enter text to ask ChatGPT',
+    nargs='*',
+    type=str
+)
+
+args = parser.parse_args()
 
 
 def get_models_list() -> list:
@@ -30,8 +39,10 @@ def get_chat(model: str, prompt: str) -> str:
 
 
 def main():
-    p = 'tell me a story of a lion cub'
-    resp = get_chat('gpt-3.5-turbo', p)
+    resp = get_chat(
+        'gpt-3.5-turbo',
+        ' '.join(args.prompt)
+    )
     print(resp)
 
 
