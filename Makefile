@@ -8,11 +8,12 @@ PIP ?= pip3
 build:
 	$(PYTHON) setup.py bdist_wheel sdist
 
+check:
+	$(PYTHON) -m twine check dist/*
+
 ci: build
 	$(PYTHON) -m unittest discover tests -v
 	$(PYTHON) -m tox
-	@echo "checking package:"
-	$(PYTHON) -m twine check dist/*
 
 clean:
 	$(PIP) uninstall gptcli -y
