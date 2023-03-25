@@ -1,0 +1,36 @@
+name: GPT Cli CI Tests
+on:
+  push:
+    branches:
+      - 'dev/*'
+      - 'feature/*'
+      - 'hotfix/*'
+      - 'master'
+      - 'test/*'
+
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  unit-tests:
+      run-unit-tests:
+        strategy:
+          matrix:
+            python-version: ['3.9', '3.10', '3.11']
+            os: [macos-latest, windows-latest, ubuntu-latest]
+          runs-on: ${{ matrix.os }}
+
+          steps:
+            - uses: actions/checkout@v3
+            - name: check python version
+              run: python3 --version
+            - name: check pip version
+              run: pip3 --version
+            - name: install tox
+              run: pip3 install --upgrade tox
+            - name: running python tests
+              run: tox
+            - name: checking python package
+              run: |
+                make build
+                make
