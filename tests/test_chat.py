@@ -1,5 +1,5 @@
 import unittest
-from src.gptcli.chat_cli import (
+from src.gptcli.chat import (
     get_models_list,
     get_chat
 )

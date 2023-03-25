@@ -1,5 +1,5 @@
 # pylint: disable=missing-module-docstring
-from .chat_cli import (
+from .chat import (
     get_chat,
     get_models_list
 )
