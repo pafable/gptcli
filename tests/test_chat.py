@@ -1,17 +1,30 @@
 import unittest
-from src.gpt_cli.chat_cli import get_chat
+from src.gptcli.chat_cli import (
+    get_models_list,
+    get_chat
+)
 
 
-class TestChat(unittest.TestCase):
+class TestGpt(unittest.TestCase):
+    test_list = ['test']
+
+    def test_get_models_list(self):
+        self.assertEqual(
+            type(
+                get_models_list()
+            ),
+            type(
+                TestGpt.test_list
+            )
+        )
+
     def test_get_chat(self):
         self.assertEqual(
             type(
                 get_chat(
                     'gpt-3.5-turbo',
-                    'say hello world'
+                    'say hello'
                 )
             ),
-            type(
-                'test'
-            )
+            type(TestGpt.test_list[0])
         )

@@ -1,11 +1,24 @@
+"""
+Interacts with OpenAI's ChatGPT
+"""
+
 import argparse
-import openai
 import os
+import sys
+import openai
+
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_models_list() -> list:
+    """
+    Retrieves model list
+    :return: None
+    """
     retval = []
     models = openai.Model.list()
 
@@ -17,6 +30,12 @@ def get_models_list() -> list:
 
 
 def get_chat(model: str, prompt: str) -> str:
+    """
+    Sends prompt to ChatGPT and retrieves a response
+    :param model: str
+    :param prompt: str
+    :return: str
+    """
     retval = openai.ChatCompletion.create(
         model=model,
         messages=[
@@ -49,4 +68,4 @@ def main():
 
 
 if __name__ == '__main__':
-    exit(main())
+    sys.exit(main())
