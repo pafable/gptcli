@@ -15,6 +15,9 @@ check: build
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m twine check dist/*
 
+check:
+	$(PYTHON) -m twine check dist/*
+
 ci: build
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m unittest discover tests -v
@@ -31,6 +34,6 @@ install:
 
 upload: build ci
 	$(PIP) install --upgrade $(TWINE)
-	$(PYTHON) -m twine upload \
+	$(PYTHON) -m twine upload --verbose \
 		--config-file $(PYPIRC_CONFIG) \
 		--repository $(PYPI_REPO_NAME) dist/*
