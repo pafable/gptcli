@@ -34,6 +34,6 @@ install:
 
 upload: build ci
 	$(PIP) install --upgrade $(TWINE)
-	$(PYTHON) -m twine upload \
+	$(PYTHON) -m twine upload --verbose \
 		--config-file $(PYPIRC_CONFIG) \
 		--repository $(PYPI_REPO_NAME) dist/*
