@@ -12,7 +12,7 @@ export OPENAI_API_KEY=sk-*********
 
 ## Install
 ```
-pip install .
+make install
 ```
 
 ## Usage

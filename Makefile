@@ -27,7 +27,7 @@ clean:
 		*/*.egg-info
 
 install:
-	$(PYTHON) setup.py install
+	$(PIP) install .
 
 upload: build ci
 	$(PIP) install --upgrade $(TWINE)
