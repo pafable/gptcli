@@ -3,12 +3,13 @@ PYPIRC_CONFIG ?= $(HOME)/.pypirc
 PYPI_REPO_NAME ?= testpypi
 PIP ?= pip3
 TWINE='twine>=4.0.2'
+BUILD='build>=0.10.0'
 
 .PHONY: build ci clean install upload
 
 build:
-	ls -alh
-	$(PYTHON) setup.py bdist_wheel sdist
+	$(PIP) install --upgrade $(BUILD)
+	$(PYTHON) -m build
 
 check: build
 	$(PIP) install --upgrade $(TWINE)
