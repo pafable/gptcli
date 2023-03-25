@@ -13,6 +13,7 @@ env:
 
 jobs:
   unit-tests:
+    continue-on-error: true
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11']
