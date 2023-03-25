@@ -54,6 +54,7 @@ def main():
         dest='prompt',
         help='enter text to ask ChatGPT',
         nargs='*',
+        required=True,
         type=str
     )
 
