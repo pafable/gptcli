@@ -2,8 +2,9 @@ PYTHON ?= python3
 PYPIRC_CONFIG ?= $(HOME)/.pypirc
 PYPI_REPO_NAME ?= testpypi
 PIP ?= pip3
-TWINE='twine>=4.0.2'
-BUILD='build>=0.10.0'
+TWINE ?= 'twine>=4.0.2'
+BUILD ?= 'build>=0.10.0'
+TOX ?= 'tox>=4.4.7'
 
 .PHONY: build ci clean install upload
 
@@ -11,13 +12,12 @@ build:
 	$(PIP) install --upgrade $(BUILD)
 	$(PYTHON) -m build
 
-check: build
+check: build ci
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m twine check dist/*
 
-ci: build
-	$(PIP) install --upgrade $(TWINE)
-	$(PYTHON) -m unittest discover tests -v
+ci:
+	$(PIP) install --upgrade $(TOX)
 	$(PYTHON) -m tox
 
 clean:
