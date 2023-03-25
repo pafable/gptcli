@@ -15,6 +15,9 @@ check: build
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m twine check dist/*
 
+check:
+	$(PYTHON) -m twine check dist/*
+
 ci: build
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m unittest discover tests -v
