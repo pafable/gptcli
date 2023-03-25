@@ -9,7 +9,7 @@ TWINE='twine>=4.0.2'
 build:
 	$(PYTHON) setup.py bdist_wheel sdist
 
-check:
+check: build
 	$(PIP) install --upgrade $(TWINE)
 	$(PYTHON) -m twine check dist/*
 

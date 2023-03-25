@@ -30,6 +30,4 @@ jobs:
       - name: running python tests
         run: tox
       - name: checking python package
-        run: |
-          ls -alh
-          make check
+        run: make check
