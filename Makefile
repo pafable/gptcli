@@ -7,6 +7,7 @@ TWINE='twine>=4.0.2'
 .PHONY: build ci clean install upload
 
 build:
+	ls -alh
 	$(PYTHON) setup.py bdist_wheel sdist
 
 check: build
