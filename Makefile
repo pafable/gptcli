@@ -28,7 +28,7 @@ clean:
 install:
 	$(PIP) install .
 
-upload: build ci
+upload: check
 	@echo packaging ${VERSION}
 	$(PYTHON) -m twine upload --verbose \
 		--repository-url $(PYPI_REPO_URL) dist/*
