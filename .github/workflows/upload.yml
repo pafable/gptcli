@@ -1,10 +1,14 @@
-name: GPT Cli Upload Package
+name: Upload Package
 on:
   workflow_dispatch:
+
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:
   upload-package:
     runs-on: ubuntu-latest
+    python-version: '3.11'
     steps:
       - uses: actions/checkout@v3
       - name: uploading package
