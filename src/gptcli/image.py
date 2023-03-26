@@ -7,7 +7,7 @@ import os
 import openai
 
 # non-standard
-from __version__ import __version__
+from .__version__ import __version__
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 

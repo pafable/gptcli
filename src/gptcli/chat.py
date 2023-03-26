@@ -8,7 +8,7 @@ import sys
 import openai
 
 # non-standard
-from __version__ import __version__
+from .__version__ import __version__
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
