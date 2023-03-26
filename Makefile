@@ -7,7 +7,7 @@ TOX ?= 'tox>=4.4.7'
 
 .PHONY: build ci clean install upload
 
-build:
+build: upgrade
 	$(PIP) install --upgrade $(BUILD)
 	$(PYTHON) -m build
 
@@ -25,8 +25,11 @@ clean:
 		dist \
 		*/*.egg-info
 
-install:
+install: upgrade
 	$(PIP) install .
+
+upgrade:
+	$(PYTHON) -m pip install --upgrade pip
 
 upload: check
 	$(PYTHON) -m twine upload --verbose \
