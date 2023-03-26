@@ -7,6 +7,9 @@ import os
 import sys
 import openai
 
+# non-standard
+from __version__ import __version__
+
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-function-docstring
@@ -56,6 +59,14 @@ def main():
         nargs='*',
         required=True,
         type=str
+    )
+    parser.add_argument(
+        '-v',
+        '--version',
+        action='version',
+        help='version',
+        type=str,
+        version=__version__
     )
 
     args = parser.parse_args()

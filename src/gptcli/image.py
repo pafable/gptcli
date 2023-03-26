@@ -6,6 +6,9 @@ import webbrowser
 import os
 import openai
 
+# non-standard
+from __version__ import __version__
+
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
@@ -48,6 +51,14 @@ def main():
         default='512x512',
         help='enter the resolution of the image. ex: 256x256, 512x512, 1024x1024 ',
         type=str
+    )
+    parser.add_argument(
+        '-v',
+        '--version',
+        action='version',
+        help='version',
+        type=str,
+        version=__version__
     )
 
     args = parser.parse_args()
