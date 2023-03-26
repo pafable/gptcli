@@ -57,7 +57,6 @@ def main():
         dest='prompt',
         help='enter text to ask ChatGPT',
         nargs='*',
-        required=True,
         type=str
     )
     parser.add_argument(
@@ -65,7 +64,6 @@ def main():
         '--version',
         action='version',
         help='gpt-chat cli version',
-        type=str,
         version=__version__
     )
 
