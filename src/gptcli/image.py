@@ -57,7 +57,6 @@ def main():
         '--version',
         action='version',
         help='gpt-image cli version',
-        type=str,
         version=__version__
     )
 
