@@ -12,7 +12,6 @@ from .__version__ import __version__
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
@@ -51,6 +50,7 @@ def get_chat(model: str, prompt: str) -> str:
     return retval.choices[0].message.content
 
 
+# pylint: disable=missing-function-docstring
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -64,7 +64,7 @@ def main():
         '-v',
         '--version',
         action='version',
-        help='version',
+        help='gpt-chat cli version',
         type=str,
         version=__version__
     )
