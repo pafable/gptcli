@@ -1,6 +1,10 @@
 name: GPT Cli Upload Package
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version'
+        required: false
 
 jobs:
   upload-package:
@@ -10,5 +14,6 @@ jobs:
       - name: uploading package
         run: make upload
         env:
+          VERSION: ${{ inputs.version }}
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
