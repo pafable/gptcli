@@ -1,6 +1,5 @@
 PYTHON ?= python3
-PYPIRC_CONFIG ?= $(HOME)/.pypirc
-PYPI_REPO_NAME ?= testpypi
+PYPI_REPO_URL ?= 'https://test.pypi.org/legacy/'
 PIP ?= pip3
 TWINE ?= 'twine>=4.0.2'
 BUILD ?= 'build>=0.10.0'
@@ -30,7 +29,6 @@ install:
 	$(PIP) install .
 
 upload: build ci
-	$(PIP) install --upgrade $(TWINE)
+	@echo packaging ${VERSION}
 	$(PYTHON) -m twine upload --verbose \
-		--config-file $(PYPIRC_CONFIG) \
-		--repository $(PYPI_REPO_NAME) dist/*
+		--repository-url $(PYPI_REPO_URL) dist/*
