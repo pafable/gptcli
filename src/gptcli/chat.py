@@ -2,13 +2,12 @@
 Interacts with OpenAI's ChatGPT
 """
 
-import argparse
 import os
 import sys
 import openai
 
 # non-standard
-from .__version__ import __version__
+from .gpt_args import BaseArgs
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
@@ -52,19 +51,12 @@ def get_chat(model: str, prompt: str) -> str:
 
 # pylint: disable=missing-function-docstring
 def main():
-    parser = argparse.ArgumentParser()
+    parser = BaseArgs()
     parser.add_argument(
         dest='prompt',
         help='enter text to ask ChatGPT',
         nargs='*',
         type=str
-    )
-    parser.add_argument(
-        '-v',
-        '--version',
-        action='version',
-        help='gpt-chat cli version',
-        version=__version__
     )
 
     args = parser.parse_args()

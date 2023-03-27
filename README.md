@@ -28,7 +28,7 @@ gpt-chat <YOUR PROMPT>
 
 Get an Image
 ```
-gpt-image --prompt '<YOUR-PROMPT>' --count 1 --resolution '1024x1024'
+gpt-image --prompt '<YOUR-PROMPT>' --count 1 --resolution 1024x1024
 ```
 | Flag         | Short Flag | Description                      |
 |:-------------|:-----------|:---------------------------------|
