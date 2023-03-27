@@ -7,7 +7,10 @@ import sys
 import openai
 
 # non-standard
-from .gpt_args import BaseArgs
+try:
+    from .gpt_args import BaseArgs
+except ImportError:
+    from gpt_args import BaseArgs
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
@@ -51,7 +54,7 @@ def get_chat(model: str, prompt: str) -> str:
 
 # pylint: disable=missing-function-docstring
 def main():
-    parser = BaseArgs()
+    parser = BaseArgs(description='Retrieves prompt from chatgpt')
     parser.add_argument(
         dest='prompt',
         help='enter text to ask ChatGPT',
@@ -60,6 +63,9 @@ def main():
     )
 
     args = parser.parse_args()
+
+    if not args.prompt:
+        sys.exit(parser.print_help())
 
     resp = get_chat(
         'gpt-3.5-turbo',

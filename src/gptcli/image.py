@@ -4,9 +4,13 @@ Interacts with OpenAI's image generation AI
 import webbrowser
 import os
 import openai
+import sys
 
 # non-standard
-from .gpt_args import BaseArgs
+try:
+    from .gpt_args import BaseArgs
+except ImportError:
+    from gpt_args import BaseArgs
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
@@ -29,12 +33,12 @@ def get_image(prompt: str, count: int, res: str) -> dict:
 
 # pylint: disable=missing-function-docstring
 def main():
-    parser = BaseArgs()
+    parser = BaseArgs(description='Retrieves images from OpenAI')
     parser.add_argument(
         '-p',
         '--prompt',
         help='enter text to generate image',
-        required=True,
+        required=False,
         type=str
     )
     parser.add_argument(
@@ -54,6 +58,9 @@ def main():
 
     args = parser.parse_args()
 
+    if args.prompt is None:
+        sys.exit(parser.print_help())
+
     resp = get_image(
         args.prompt,
         args.count,
@@ -65,4 +72,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

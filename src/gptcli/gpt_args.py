@@ -4,7 +4,10 @@ Base arguments
 import argparse
 
 # non-standard import
-from .__version__ import __version__
+try:
+    from .__version__ import __version__
+except ImportError:
+    from __version__ import __version__
 
 
 class BaseArgs(argparse.ArgumentParser):
