@@ -1,13 +1,12 @@
 """
 Interacts with OpenAI's image generation AI
 """
-import argparse
 import webbrowser
 import os
 import openai
 
 # non-standard
-from gpt_args import BaseArgs
+from .gpt_args import BaseArgs
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 

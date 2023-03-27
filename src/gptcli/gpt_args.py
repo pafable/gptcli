@@ -1,10 +1,16 @@
+"""
+Base arguments
+"""
 import argparse
 
 # non-standard import
-from __version__ import __version__
+from .__version__ import __version__
 
 
 class BaseArgs(argparse.ArgumentParser):
+    """
+    Base arguments class
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

@@ -2,13 +2,12 @@
 Interacts with OpenAI's ChatGPT
 """
 
-import argparse
 import os
 import sys
 import openai
 
 # non-standard
-from gpt_args import BaseArgs
+from .gpt_args import BaseArgs
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
