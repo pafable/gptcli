@@ -2,7 +2,6 @@
 Interacts with OpenAI's ChatGPT
 """
 
-import os
 import sys
 import openai
 
@@ -14,8 +13,6 @@ except ImportError:
 
 # pylint: disable=missing-module-docstring
 # pylint: disable=missing-class-docstring
-
-openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_models_list() -> list:

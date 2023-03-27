@@ -2,17 +2,14 @@
 Interacts with OpenAI's image generation AI
 """
 import webbrowser
-import os
-import openai
 import sys
+import openai
 
 # non-standard
 try:
     from .gpt_args import BaseArgs
 except ImportError:
     from gpt_args import BaseArgs
-
-openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_image(prompt: str, count: int, res: str) -> dict:
