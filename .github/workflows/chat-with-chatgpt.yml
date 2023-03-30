@@ -11,7 +11,7 @@ env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:
-  upload-package:
+  chat-with-chatgpt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
