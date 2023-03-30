@@ -1,0 +1,28 @@
+name: Chat with ChatGPT
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Prompt to ask ChatGPT'
+        required: true
+        type: string
+
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  upload-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4.5.0
+        with:
+          python-version: '3.11'
+      - name: install dep
+        run: pip install openai
+      - name: install gptcli
+        run: pip install -i https://test.pypi.org/simple/ gptcli
+      - name: chatting with ChatGPT
+        run: gpt-chat ${{ github.event.inputs.prompt }}
+
+
